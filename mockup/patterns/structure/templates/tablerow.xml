@@ -2,17 +2,21 @@
 
 <td class="title">
   <div class="pull-left">
+ 
     <a href="<%- viewURL %>"
         class="manage state-<%- review_state %> contenttype-<%- contenttype %>"
         title="<%- portal_type %>">
+        <% if(attributes["getMimeIcon"] ){ %>
+          <img class="mime-icon" src="<%- getMimeIcon %>"> <% } %>   
       <%- Title %>
     </a>
     <% if(expired){ %>
       <span class="plone-item-expired"><%- _t('Expired') %></span>
     <% } %>
   </div>
-  <% if(attributes["getIcon"] ){ %>
-  <img class="image-<%- iconSize %> pull-right" src="<%- getURL %>/@@images/image/<%- iconSize %>">
+
+  <% if(attributes["getIcon"] && ( thumbSize != 'none') ){ %>
+  <img class="image-<%- thumbSize %> pull-right" src="<%- getURL %>/@@images/image/<%- thumbSize %>">
   <% } %>
 </td>
 
