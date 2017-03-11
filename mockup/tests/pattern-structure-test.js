@@ -553,6 +553,7 @@ define([
         {
           model: {
             'Title': "Dummy Image",
+            'id': "dummy_page",
             'is_folderish': false,
             'portal_type': "Image",
             'getURL': 'http://nohost/dummy_image'
@@ -561,6 +562,7 @@ define([
         }, {
           model: {
             Title: "Dummy File",
+            id: "dummy_file",
             is_folderish: false,
             portal_type: "File",
             getURL: 'http://nohost/dummy_file'
@@ -569,6 +571,7 @@ define([
         }, {
           model: {
             Title: "Dummy Blob",
+            id: "dummy_blob",
             is_folderish: false,
             portal_type: "Blob",
             getURL: 'http://nohost/dummy_blob'
@@ -577,6 +580,7 @@ define([
         }, {
           model: {
             Title: "Dummy Document",
+            id: "dummy_document",
             is_folderish: false,
             portal_type: "Document",
             getURL: 'http://nohost/dummy_document'
@@ -606,10 +610,11 @@ define([
     });
 
     it('should display an icon for contents with images', function() {
-      this.app.iconSize = 'largest_possible';
+      this.app.thumbSize = 'tile';
 
       var model = new Result({
           'Title': "Dummy Document",
+          'id': "dummy_document",
           'is_folderish': false,
           'portal_type': "Document",
           'getURL': 'http://nohost/dummy_image',
@@ -623,7 +628,7 @@ define([
       var el = row.render().el;
 
       expect($('.title img', el).length).to.equal(1);
-      expect($('.title img', el).attr('class')).to.have.string('image-largest_possible');
+      expect($('.title img', el).attr('class')).to.have.string('image-tile');
     });
 
     it('should display no icon for contents without images', function() {
@@ -631,6 +636,7 @@ define([
 
       var model = new Result({
           'Title': "Dummy Document",
+          'id': "dummy_document",
           'is_folderish': false,
           'portal_type': "Document",
           'getURL': 'http://nohost/dummy_image',
@@ -670,6 +676,7 @@ define([
 
 			var collection = new ResultCollection([{
         'Title': 'Date Columns Test Document',
+        'id': 'date_columns_test_document',
         'is_folderish': false,
         'portal_type': 'Document',
         'getURL': 'http://nohost/doc',
